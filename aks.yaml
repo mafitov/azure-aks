@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azure-aks-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: azure-aks
+  template:
+    metadata:
+      labels:
+        app: azure-aks
+    spec:
+      containers:
+        - name: azure-aks
+          image: mafitov/azure-aks
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: db-url
+              valueFrom:
+                secretKeyRef:
+                  name: aks-secret
+                  key: db-url
+            - name: db-user
+              valueFrom:
+                secretKeyRef:
+                  name: aks-secret
+                  key: db-user
+            - name: db-password
+              valueFrom:
+                secretKeyRef:
+                  name: aks-secret
+                  key: db-password
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: azure-aks
+    k8s-app: azure-aks
+  name: azure-aks
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  type: LoadBalancer
+  selector:
+    app: azure-aks

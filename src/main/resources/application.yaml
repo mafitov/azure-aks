@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: ${db-url}
+    username: ${db-name}
+    password: ${db-password}
+  sql:
+    init:
+      mode: always
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
