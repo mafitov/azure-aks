@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: azure-aks
-          image: mafitov/azure-aks
+          image: mafitov/azure-aks:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

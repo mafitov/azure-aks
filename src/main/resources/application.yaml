@@ -1,7 +1,7 @@
 spring:
   datasource:
     url: ${db-url}
-    username: ${db-name}
+    username: ${db-user}
     password: ${db-password}
   sql:
     init:

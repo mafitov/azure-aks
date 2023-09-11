@@ -18,11 +18,12 @@
 - azure create postgres `az postgres server create --name aks-server --resource-group aks-resource-group --location germanywestcentral --admin-user <db_user> --admin-password <db_password> --sku-name B_Gen5_1`
 - kubectl get credentials `az aks get-credentials --resource-group aks-resource-group --name aks-cluster`
 - kubectl get nodes `kubectl get nodes`
-- kubectl create secret `kubectl create secret generic aks-secret --from-literal=db-url=<db_url> --from-literal=db-user=<db_user> --from-literal=db-password=<db_password>`
+- kubectl create secret `kubectl create secret generic aks-secret --from-literal=db-url=jdbc:postgresql://<db-name>.postgres.database.azure.com:5432/postgres?sslmode=require --from-literal=db-user=<db_user>@<db_name> --from-literal=db-password=<db_password>`
 - kubectl create deployment and service `kubectl apply -f https://raw.githubusercontent.com/<github_account>/azure-aks/master/aks.yaml`
 - kubectl get nodes `kubectl get pods`
 - kubectl get service `kubectl get service azure-aks --watch`
 - kubectl describe pod `kubectl describe pod <pod-name>`
+- kubectl describe deployment`kubectl describe deployment <deployment-name>`
 - kubectl show logs `kubectl logs <pod-name> --all-containers`
 
 ### Clear resources

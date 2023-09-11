@@ -9,7 +9,6 @@ public class Todo {
 
     public Todo(String description, String details, boolean done) {
         this.description = description;
-        this.details = details;
         this.done = done;
     }
 
@@ -17,8 +16,6 @@ public class Todo {
     private Long id;
 
     private String description;
-
-    private String details;
 
     private boolean done;
 
@@ -36,14 +33,6 @@ public class Todo {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
     }
 
     public boolean isDone() {

@@ -19,7 +19,7 @@ public class TodoController {
         return todoRepository.save(todo);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public Iterable<Todo> getTodos() {
         return todoRepository.findAll();
     }
